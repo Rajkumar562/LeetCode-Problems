@@ -82,52 +82,52 @@ class Solution
 {
     Node compute(Node head)
     {
-        // Stack <Integer> s =new Stack<Integer>();
+        Stack <Integer> s =new Stack<Integer>();
         
-        // while(head!=null)
-        // {
-        //     if(s.empty())
-        //     {
-        //         s.push(head.data);
-        //         head=head.next;
-        //         continue;
-        //     }
-            
-        //     if(s.peek() >= head.data)
-        //     s.push(head.data);
-        //     else
-        //     {
-        //         while(!s.empty() && s.peek()<head.data)
-        //         {
-        //             s.pop();
-        //         }
-        //         s.push(head.data);
-        //     }
-        //     head=head.next;
-        // }
-        
-        // Node prev=null;
-        // while(!s.empty())
-        // {
-        //     Node n=new Node(s.pop());
-        //     n.next=prev;
-        //     prev=n;
-        // }
-        // return prev;
-        
-        Node current = head;
-        while (current.next != null) {
-            if (current.next.data > current.data) {
-                current.data = current.next.data;
-                Node tempNode = current.next;
-                current.next = current.next.next;
-                tempNode = null;
-                current = head;
-            } else {
-                current = current.next;
+        while(head!=null)
+        {
+            if(s.empty())
+            {
+                s.push(head.data);
+                head=head.next;
+                continue;
             }
+            
+            if(s.peek() >= head.data)
+            s.push(head.data);
+            else
+            {
+                while(!s.empty() && s.peek()<head.data)
+                {
+                    s.pop();
+                }
+                s.push(head.data);
+            }
+            head=head.next;
         }
-        return head;
+        
+        Node prev=null;
+        while(!s.empty())
+        {
+            Node n=new Node(s.pop());
+            n.next=prev;
+            prev=n;
+        }
+        return prev;
+        
+        // Node current = head;
+        // while (current.next != null) {
+        //     if (current.next.data > current.data) {
+        //         current.data = current.next.data;
+        //         Node tempNode = current.next;
+        //         current.next = current.next.next;
+        //         tempNode = null;
+        //         current = head;
+        //     } else {
+        //         current = current.next;
+        //     }
+        // }
+        // return head;
     }
 }
   
