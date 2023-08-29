@@ -1,15 +1,13 @@
 //{ Driver Code Starts
 import java.io.*;
 import java.util.*;
-import java.util.stream.*;
 
 class Array {
     
 	public static void main (String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		PrintWriter ot = new PrintWriter(System.out);
 		int t = Integer.parseInt(br.readLine().trim()); //Inputting the testcases
-		
+		PrintWriter out = new PrintWriter(System.out);
 		while(t-->0){
 		    
 		    //input size of array
@@ -30,15 +28,15 @@ class Array {
 		    //calling leaders() function
 		    res = obj.leaders(arr, n);
 		    
-
+		    //appending result to a String
 		    for(int i=0; i<res.size(); i++){
-		        ot.print(res.get(i)+" ");
+		        str.append(res.get(i)+" ");
 		    }
 		    
-		    ot.println();
+		    //printing the String
+		    out.println(str);
 		}
-		ot.close();
-		
+		out.flush();
 	}
 }
 
@@ -49,21 +47,17 @@ class Solution{
     //Function to find the leaders in the array.
     static ArrayList<Integer> leaders(int arr[], int n){
         // Your code here
-        int max= arr[n-1];
-        
-        ArrayList <Integer> ld =new ArrayList <Integer> ();
-        
-        ld.add(max);
-        
-        for(int i=n-2;i>=0;i--)
+        ArrayList <Integer> lt = new ArrayList <> ();
+        int max=-1;int cur;
+        for (int i=n-1;i>-1;i--)
         {
-            if(arr[i]>=max)
+            cur=arr[i];
+            if(cur>=max)
             {
-                max=arr[i];
-                ld.add(max);
+                max=cur;
+                lt.add(0,max);
             }
         }
-        ld.sort(Collections.reverseOrder());
-        return ld;
+        return lt;
     }
 }
